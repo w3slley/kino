@@ -10,7 +10,7 @@ class MovieCard extends Component {
         </div>
         <div style={rightBox}>
           <p>{this.props.data.Title} ({this.props.data.Year})</p>
-          <Link to={`/movies/${this.props.data.imdbID}`}>More</Link>
+          <Link to={`/movies/${this.props.data.imdbID}`}><button>More</button></Link>
         </div>
          
           

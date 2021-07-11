@@ -19,7 +19,7 @@ router.get('/search', async (req, res)=>{
 		console.error(err);
 	}
 
-	let movies = response.data.Search;
+	let movies = response.data;
 
 	res.setHeader('Content-Type','application/json');
 	res.send(JSON.stringify(movies));

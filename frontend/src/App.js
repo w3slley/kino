@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Search from './components/Search.js';
+import MovieCardContainer from './components/MovieCardContainer.js';
 import MovieContainer from './components/MovieContainer.js';
-import Movie from './components/Movie.js';
 
 
 
@@ -11,8 +11,8 @@ function App(){
     <Router>
       <Search />
       <Switch>
-        <Route exact path='/search/:searchMovie' component={MovieContainer} />
-        <Route exact path='/movies/:movieId' component={Movie} />
+        <Route exact path='/search/:searchMovie' component={MovieCardContainer} />
+        <Route exact path='/movies/:movieId' component={MovieContainer} />
       </Switch>
     </Router>
   );
