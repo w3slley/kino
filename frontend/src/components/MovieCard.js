@@ -6,7 +6,7 @@ class MovieCard extends Component {
     return ( 
       <div style={container}>
         <div style={leftBox}>
-          <img src={this.props.data.Poster} style={img} alt='' />
+          <img src={this.props.data.Poster === 'N/A'?'/images/no-img-available.png':this.props.data.Poster} style={img} alt='' />
         </div>
         <div style={rightBox}>
           <p>{this.props.data.Title} ({this.props.data.Year})</p>
