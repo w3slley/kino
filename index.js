@@ -17,6 +17,10 @@ app.get('/', (req, res)=>{
 /*Movie routes*/
 app.use('/movies', require('./routes/movies.js'));
 
+/*Users routes*/
+app.use('/users', require('./routes/users.js'));
+
+
 app.listen(port, ()=>{
   console.log(`Server started at port ${port}!`);
 })
