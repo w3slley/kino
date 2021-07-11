@@ -67,7 +67,7 @@ class Movie extends Component {
           <Trailer youtubeId={this.state.movieData.YoutubeId} />
           <a target='_blank' rel="noreferrer" href={`https://imdb.com/title/${this.state.movieData.imdbID}`}>View on IMDB</a>
           <br />
-          <button onClick={()=>this.goBack()}>Go back</button>
+          <button class="btn btn-outline-secundary" onClick={()=>this.goBack()}>Go back</button>
         </div>
         :
         <p>{this.state.errors}</p>
