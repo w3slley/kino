@@ -4,7 +4,8 @@ class Register extends Component {
   state = {  }
   render() { 
     return (
-      <div style={{width:'30%',margin:'100px auto'}} className='container'>
+      <div style={{width:'30%',margin:'50px auto'}} className='container'>
+        <h1>Create an account</h1>
         <form method="post" action="/users/register" className="needs-validation">
           <div className="mb-3">
             <label >Name</label>
@@ -25,7 +26,7 @@ class Register extends Component {
             </div>
           </div>
           <div className="mb-3">
-            <label>Email <span className="text-muted">(Optional)</span></label>
+            <label>Email</label>
             <input name="email" type="email" className="form-control" placeholder="you@example.com"></input>
             <div className="invalid-feedback">
               Please enter a valid email address.

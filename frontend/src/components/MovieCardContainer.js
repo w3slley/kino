@@ -33,7 +33,7 @@ class MovieCardContainer extends Component {
   getMovies(){
     let movieName = this.props.match.params.searchMovie;
     this.setState({pageNumber: 1, noMoreMovies: false}); //Getting first page of new search
-    fetch(`http://localhost:8000/movies/search?q=${movieName}&p=1`)
+    fetch(`http://192.168.1.68:8000/movies/search?q=${movieName}&p=1`)
     .then(response => response.json())
     .then(data => {
       this.setState({dataFetched: true})
@@ -66,7 +66,7 @@ class MovieCardContainer extends Component {
       
       this.setState({pageNumber: newPageNumber});
       let movieName = this.props.match.params.searchMovie;
-      fetch(`http://localhost:8000/movies/search?q=${movieName}&p=${newPageNumber}`)
+      fetch(`http://192.168.1.68:8000/movies/search?q=${movieName}&p=${newPageNumber}`)
       .then(response => response.json())
       .then(data => this.setState({movies: [...this.state.movies, ...data.Search]}));
     }

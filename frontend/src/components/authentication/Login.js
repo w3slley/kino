@@ -16,7 +16,6 @@ class Login extends Component {
             <input className="mt-5 mb-3" type="password" className="form-control" placeholder="Password" ></input>
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
-          <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
         </form>
       </div>
     );
