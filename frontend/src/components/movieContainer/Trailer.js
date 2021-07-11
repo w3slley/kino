@@ -5,7 +5,7 @@ class Trailer extends Component {
     return (
       <div>
         <h3>Trailer</h3>
-        <iframe title={this.props.youtubeId} width='600px' height='300px'  src={`https://youtube.com/embed/${this.props.youtubeId}`}></iframe>
+        <iframe title={this.props.youtubeId} width='80%' height='500px'  src={`https://youtube.com/embed/${this.props.youtubeId}`}></iframe>
       </div>
     );
   }

@@ -1,13 +1,13 @@
 import {Component} from 'react';
 
-class Poster extends Component {
+class Trailer extends Component {
   render() { 
     return ( 
-      <div>
-        <img width="200px" src={this.props.url} alt=""></img>
+      <div style={{width:'30%'}}>
+        <img width="100%" src={this.props.url} alt=""></img>
       </div>
      );
   }
 }
  
-export default Poster;
+export default Trailer;

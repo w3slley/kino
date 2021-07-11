@@ -12,7 +12,6 @@ class Movie extends Component {
     this.state = {
       dataFetched: false,
       movieData: '',
-      movieRatings: [],
       errors: []
     }
   }
@@ -36,7 +35,6 @@ class Movie extends Component {
       this.setState({dataFetched: true});
       if(data.Response === 'True'){
         this.setState({movieData: data});
-        this.setState({movieRatings: data.Ratings});
       }
       else if(data.status === 'failed'){
         this.setState({errors: data.message})
@@ -52,7 +50,7 @@ class Movie extends Component {
   }
   render() { 
     return ( 
-      <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <div style={{position:'relative'}} class="container mt-5 px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         {!this.state.dataFetched? 
         <Loader 
           type="TailSpin"
@@ -62,12 +60,18 @@ class Movie extends Component {
         />  : ''}
         {this.state.dataFetched && this.state.errors.length === 0 ?
         <div>
-          <Poster url={this.state.movieData.Poster} />
-          <Info data={this.state.movieData} raitings={this.state.movieRaitings} />
+          <div>
+            <button style={{position:'absolute',left:15,top:-20}} class="btn btn-secundary" onClick={()=>this.goBack()}>Go back</button>
+            <a style={{float:'right'}} target='_blank' rel="noreferrer" href={`https://imdb.com/title/${this.state.movieData.imdbID}`}><img alt="" style={{width:60}} src='/images/imdb-logo.png'></img></a>
+          </div>
+          
+          <div style={{display:'flex', marginBottom:50}}>
+            <Poster url={this.state.movieData.Poster} />
+            <Info data={this.state.movieData} />
+          </div>
+          
           <Trailer youtubeId={this.state.movieData.YoutubeId} />
-          <a target='_blank' rel="noreferrer" href={`https://imdb.com/title/${this.state.movieData.imdbID}`}>View on IMDB</a>
-          <br />
-          <button class="btn btn-outline-secundary" onClick={()=>this.goBack()}>Go back</button>
+          
         </div>
         :
         <p>{this.state.errors}</p>
