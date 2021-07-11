@@ -75,37 +75,34 @@ class MovieCardContainer extends Component {
   render() { 
     return (
       <>
-      {!this.state.dataFetched? 
-      <Loader 
-        type="TailSpin"
-        color="#262626" 
-        height={80} 
-        width={80} 
-      />  : ''}
-       
-      {this.state.dataFetched && this.state.errors.length === 0 ? 
-      <>
-      <div style={container}>
-        {this.state.movies.map((movie)=>(
-          <MovieCard key={movie.imdbID} data={movie} />
-        ))}
+      <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        {!this.state.dataFetched? 
+        <Loader 
+          type="TailSpin"
+          color="#262626" 
+          height={80} 
+          width={80} 
+        />  : ''}
+
+        
+
+        {this.state.dataFetched && this.state.errors.length === 0 ? 
+        <>
+        <div className="row">
+          {this.state.movies.map((movie)=>(
+            <MovieCard key={movie.imdbID} data={movie} />
+          ))}
+        </div>
+        
+        {!this.state.noMoreMovies &&
+          <button class="btn btn-outline-secondary" onClick={()=>this.loadMore()}>Load more</button>
+        }
+        </>
+        : this.state.errors}
       </div>
-      
-      {!this.state.noMoreMovies &&
-        <button onClick={()=>this.loadMore()}>Load more</button>
-      }
-      </>
-      : this.state.errors}
-      
       </>
     );
   }
-}
-
-const container = {
-  margin: '20px 0',
-  display: 'grid',
-  gridTemplateColumns: '350px 350px 350px'
 }
 
 export default MovieCardContainer;

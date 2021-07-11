@@ -4,34 +4,24 @@ import {Link} from 'react-router-dom';
 class MovieCard extends Component {
   render() { 
     return ( 
-      <div style={container}>
-        <div style={leftBox}>
-          <img src={this.props.data.Poster === 'N/A'?'/images/no-img-available.png':this.props.data.Poster} style={img} alt='' />
+      <div className="col-md-2">
+        <div style={{height:'95%'}} className="card mb-4 box-shadow d-flex">
+          <div>
+           <img style={{width: '100%'}} src={this.props.data.Poster === 'N/A'?'/images/no-img-available.png':this.props.data.Poster} alt=''></img>
+          </div>
+          <div className="card-body">
+            <p className="card-text">{this.props.data.Title} ({this.props.data.Year})</p>
+            <div className="text-center ">
+              <Link className='btn btn-sm btn-primary' to={`/movies/${this.props.data.imdbID}`}>More details</Link>
+            </div>
+          </div>
         </div>
-        <div style={rightBox}>
-          <p>{this.props.data.Title} ({this.props.data.Year})</p>
-          <Link to={`/movies/${this.props.data.imdbID}`}><button>More</button></Link>
-        </div>
-         
-          
       </div>
     );
   }
 }
 const img={
-  width: '100px'
-}
-const container = {
-  display: 'flex',
-  border: '1px solid black'
-}
-const leftBox = {
-  position: 'relative',
-  width: '30%'
-}
-const rightBox = {
-  position: 'relative',
-  width: '90%'
+  width: '200px'
 }
 
 export default MovieCard;

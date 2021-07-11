@@ -8,13 +8,15 @@ class Search extends Component {
       movieSearch: ''
     }
   }
+
   render() { 
     return ( 
       <>
-      <form>
-        <input onKeyUp={(e)=>(this.setState({movieSearch: e.target.value}))} placeholder="Search for movies"></input>
-        <Link to={`/search/${this.state.movieSearch}`}><button>Search</button></Link>
+      <form style={{justifyContent:'center'}} className="form-inline mt-5">
+        <input onKeyUp={(e)=>this.setState({movieSearch: e.target.value})} className="form-control mr-sm-2" type="search" placeholder="Search for movies" aria-label="Search"></input>
+        <Link to={`/search/${this.state.movieSearch}`}><button className='btn btn-outline-primary my-2 my-sm-0'>Search</button></Link>
       </form>
+     
       </>
     );
   }

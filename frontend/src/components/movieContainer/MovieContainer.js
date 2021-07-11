@@ -52,7 +52,7 @@ class Movie extends Component {
   }
   render() { 
     return ( 
-      <>
+      <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         {!this.state.dataFetched? 
         <Loader 
           type="TailSpin"
@@ -72,7 +72,7 @@ class Movie extends Component {
         :
         <p>{this.state.errors}</p>
         }
-      </>
+      </div>
     );
   }
 }
