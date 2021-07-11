@@ -2,7 +2,10 @@ import {Component} from 'react';
 
 class Info extends Component {
   state = {
-    icons: ['imdb-logo.png','rotten-tomatoes-logo.png','metacritic-icon.svg']
+    icons: {'Internet Movie Database':'imdb-logo.png',
+    'Rotten Tomatoes':'rotten-tomatoes-logo.png',
+    'Metacritic':'metacritic-icon.svg'
+  }
   }
   render() { 
     return ( 
@@ -20,10 +23,10 @@ class Info extends Component {
 
         <div className='mx-auto' style={{display: 'flex', flexWrap:'wrap', justifyContent:'center'}}>
           {this.props.data.Ratings !== undefined && 
-            this.props.data.Ratings.map((rating, i)=>(
+            this.props.data.Ratings.map((rating)=>(
               <div className='text-center mr-5 ml-5 mt-2'>
                 <h3>{rating.Value}</h3>
-                <img style={{width:80}} alt="" src={`/images/${this.state.icons[i]}`}></img>
+                <img style={{width:80}} alt="" src={`/images/${this.state.icons[rating.Source]}`}></img>
               </div>
             ))
           }
