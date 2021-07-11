@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Poster from './Poster.js';
 import Info from './Info.js';
 import Trailer from './Trailer.js';
-//import {Link} from 'react-router-dom';
+import Rating from './Rating.js';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
@@ -29,7 +29,7 @@ class Movie extends Component {
   }
 
   getMovie(movieId){
-    fetch(`http://localhost:8000/movies/${movieId}`)
+    fetch(`http://192.168.1.68:8000/movies/${movieId}`)
     .then(response => response.json())
     .then(data => {
       this.setState({dataFetched: true});
@@ -61,7 +61,7 @@ class Movie extends Component {
         {this.state.dataFetched && this.state.errors.length === 0 ?
         <div>
           <div>
-            <button style={{position:'absolute',left:15,top:-20}} class="btn btn-secundary" onClick={()=>this.goBack()}>Go back</button>
+            <button style={{position:'absolute',left:15,top:-20}} class="btn btn-dark" onClick={()=>this.goBack()}>Go back</button>
             <a style={{float:'right'}} target='_blank' rel="noreferrer" href={`https://imdb.com/title/${this.state.movieData.imdbID}`}><img alt="" style={{width:60}} src='/images/imdb-logo.png'></img></a>
           </div>
           
@@ -69,7 +69,7 @@ class Movie extends Component {
             <Poster url={this.state.movieData.Poster} />
             <Info data={this.state.movieData} />
           </div>
-          
+          <Rating data={this.state.movieData} />
           <Trailer youtubeId={this.state.movieData.YoutubeId} />
           
         </div>
