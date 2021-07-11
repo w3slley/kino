@@ -5,6 +5,7 @@ import Login from './components/authentication/Login.js';
 import Register from './components/authentication/Register.js';
 import About from './components/About.js';
 import Welcome from './components/Welcome.js';
+import Footer from './components/Footer.js';
 import MovieCardContainer from './components/MovieCardContainer.js';
 import MovieContainer from './components/movieContainer/MovieContainer.js';
 
@@ -23,6 +24,7 @@ function App(){
         <Route exact path='/movies/:movieId' component={MovieContainer} />
         <Route path='/' component={Welcome} />
       </Switch>
+      <Footer />
     </Router>
   );
 }
