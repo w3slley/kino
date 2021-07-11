@@ -10,10 +10,12 @@ router.get('/search', async (req, res)=>{
 	let query = queryString.parse(urlString['search']);
 	let searchMovie = (query.q).replace(' ', '+');
 	let pageNumber = query.p;
-	let searchMoviesUrl = `http://www.omdbapi.com/?s=${searchMovie}&type=movie&page=${pageNumber}&apikey=74e8c0f5`;
 	let response;
 	try{
-		response = await axios(searchMoviesUrl);
+		response = await axios({
+			method: 'GET',
+			url: `http://www.omdbapi.com/?s=${searchMovie}&type=movie&page=${pageNumber}&apikey=${process.env.OMDB_API_KEY}`
+		});
 	}
 	catch(err){
 		console.error(err);
@@ -28,27 +30,29 @@ router.get('/search', async (req, res)=>{
 //Display info about a particular movie
 router.get('/:imdbId', async (req, res)=>{
 	let movieId = req.params.imdbId;
-	if(movieId.substring(0,2) != 'tt' && movieId.length != 9){
+	if(movieId.substring(0,2) != 'tt' || movieId.length != 9){
 		res.send(JSON.stringify({'status': 'failed', 'message': 'Invalid IMDB movie id.'}));
 	}
-
-	let searchMoviesUrl = `http://www.omdbapi.com/?i=${movieId}&type=movie&apikey=74e8c0f5`;
-	let response;
+	let movieData;
 	try{
-		response = await axios(searchMoviesUrl);
+		response = await axios({
+			method: 'GET',
+			url: `http://www.omdbapi.com/?i=${movieId}&type=movie&apikey=${process.env.OMDB_API_KEY}`
+		});
+		movieData = response.data;
+		//movieData['YoutubeId'] = await getYoutubeId(movieData.Title, movieData.Year);
+		movieData['YoutubeId'] = 'upwf8RsyNqQ'; //let this here till I can make requests to the youtube api again
 	}
 	catch(err){
 		console.error(err);
 	}
 	
-	let movieData = response.data;
-	movieData['YoutubeId'] = await getYoutubeId(movieData.Title);
+	
 	res.send(movieData);
-	//res.send('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+youtubeId+'" frameborder="0" allowfullscreen></iframe>');
 })
 
-async function getYoutubeId(movieName){
-	let searchUrl = `https://www.googleapis.com/youtube/v3/search?q=${movieName.replace(' ', '+')}+official+trailer&type=video&maxResults=5&key=${process.env.YOUTUBE_API_KEY}`;
+async function getYoutubeId(movieName, year){
+	let searchUrl = `https://www.googleapis.com/youtube/v3/search?q=${movieName.replace(' ', '+')}+${year}+official+trailer&type=video&maxResults=5&key=${process.env.YOUTUBE_API_KEY}`;
 	const response = await axios(searchUrl);
 	const movies = response.data.items;
 
