@@ -49,8 +49,9 @@ The authentication system was implemented on the browser using `LocalStorage`.
 Retrieves list of movies that contains search term `movieTitle`
 
 #### GET Parameters
-`q`: Search term
-`p`: Page number 
+`q`: Search term (`+` instead of spaces between words)
+
+`p`: Page number (1 is the default value)
 
 Example:
 
