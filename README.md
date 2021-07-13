@@ -55,7 +55,7 @@ Retrieves list of movies that contains search term `movieTitle`
 
 Example:
 
-`curl 'http://localhost:8000/movies/search?q=iron+man&p=1'`
+`curl 'https://kinowebapp.herokuapp.com/movies/search?q=iron+man&p=1'`
 
 ```
 {
@@ -92,7 +92,7 @@ Retrieves data on movie whose IMDB id is `imdbId`.
 
 Example:
 
-`curl 'http://localhost:8000/movies/tt0111161'`
+`curl 'https://kinowebapp.herokuapp.com/movies/tt0111161'`
 
 ```
 {

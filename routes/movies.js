@@ -9,8 +9,12 @@ let FavoriteMovie = require('../models/FavoriteMovie.js');
 router.get('/search', async (req, res)=>{
 	const urlString = url.parse(req.url);
 	let query = queryString.parse(urlString['search']);
+	if(query.q == undefined){
+		res.send(JSON.stringify({'status':'failed','message':'Parameter q is required'}));
+	}
 	let searchMovie = (query.q).replace(' ', '+');
 	let pageNumber = query.p;
+	
 	let response;
 	try{
 		response = await axios({
