@@ -18,7 +18,6 @@ class Login extends Component {
     })
     .then(response => response.json())
     .then(data =>{
-      console.log(data);
       if(data.status === 'success'){
         localStorage.setItem('user', JSON.stringify({
           'name':data.user.name,
@@ -39,11 +38,11 @@ class Login extends Component {
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
           <div className="form-group">
             <label className="sr-only">Email address</label>
-            <input onKeyUp={(e)=>this.setState({email: e.target.value,loginError:''})} className="mt-5 mb-3" type="email" className="form-control" placeholder="Email address"></input>
+            <input onKeyUp={(e)=>this.setState({email: e.target.value,loginError:''})} className="mt-5 mb-3" type="email" className="form-control" placeholder="Email address" required></input>
           </div>
           <div className="form-group">
             <label className="sr-only">Password</label>
-            <input onKeyUp={(e)=>this.setState({password: e.target.value,loginError:''})} className="mt-5 mb-3" type="password" className="form-control" placeholder="Password" ></input>
+            <input onKeyUp={(e)=>this.setState({password: e.target.value,loginError:''})} className="mt-5 mb-3" type="password" className="form-control" placeholder="Password" required></input>
           </div>
           <span style={{color: 'red'}}>{this.state.loginError}</span><br></br>
           <button type="submit" className="btn btn-primary">Login</button>

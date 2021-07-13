@@ -22,7 +22,6 @@ class Navbar extends Component {
         : <Link className='p-2 text-dark' to='/dashboard'>Dashboard</Link>
         }
           <Link className='p-2 text-dark' to='/search'>Search</Link>
-          <Link className='p-2 text-dark' to='/about'>About</Link>
         </nav>
         {localStorage.getItem('user')==null?
         <>

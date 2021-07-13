@@ -3,7 +3,6 @@ import Search from './components/Search.js';
 import Navbar from './components/Navbar.js';
 import Login from './components/authentication/Login.js';
 import Register from './components/authentication/Register.js';
-import About from './components/About.js';
 import Welcome from './components/Welcome.js';
 import Dashboard from './components/Dashboard.js';
 import Profile from './components/Profile.js';
@@ -21,7 +20,6 @@ function App(){
         {localStorage.getItem('user')!=null &&
          <Route path='/profile' component={Profile} />
         }
-        <Route path='/about' component={About} />
 
         <Route path='/search'>
           <Search />

@@ -11,7 +11,6 @@ class Register extends Component {
 
    sendRequest(e){
      e.preventDefault();
-     console.log(this.state);
      if(this.state.password === this.state.confirmPassword){
       fetch('/users/register',{
         method:'POST',
@@ -22,7 +21,6 @@ class Register extends Component {
        })
        .then(response => response.json())
        .then(data => {
-         console.log(data);
          window.location='/login';
         });
      }

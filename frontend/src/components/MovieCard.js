@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 class MovieCard extends Component {
+
+  addToFavorite(e){
+    e.preventDefault();
+    console.log('add to favorite');
+  }
+
   render() { 
     return ( 
       <div className="col-md-2">
@@ -13,6 +19,9 @@ class MovieCard extends Component {
             <p className="card-text">{this.props.data.Title} ({this.props.data.Year})</p>
             <div className="text-center ">
               <Link className='btn btn-sm btn-primary' to={`/title/${this.props.data.imdbID}`}>More details</Link>
+              {localStorage.getItem('user') != null &&
+                <button onClick={(e)=>this.addToFavorite(e)} className='btn btn-sm btn-success mt-2'>Add to favorite</button>
+              }
             </div>
           </div>
         </div>
