@@ -78,7 +78,7 @@ router.post('/removeFavorite',(req,res)=>{
 //Display info about a particular movie
 router.get('/:imdbId', async (req, res)=>{
 	let movieId = req.params.imdbId;
-	if(movieId.substring(0,2) != 'tt' || movieId.length != 9){
+	if(movieId.substring(0,2) != 'tt'){
 		res.send(JSON.stringify({'status': 'failed', 'message': 'Invalid IMDB movie id.'}));
 	}
 	let movieData;
