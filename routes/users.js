@@ -6,7 +6,6 @@ let User = require('../models/User.js')
 
 //Login process
 router.post('/login', function (req, res) {
-  console.log(req.body.email, req.body.password)
   if(req.body.email != undefined && req.body.password != undefined){
     User.findOne({ email: req.body.email }, function (err, user) {
       if (err) console.error(err);

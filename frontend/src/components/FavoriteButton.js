@@ -25,6 +25,7 @@ class FavoriteButton extends Component{
 
   removeFromFavorite(e){
     e.preventDefault();
+    let loggedUser = JSON.parse(localStorage.getItem('user'));
     // If in dashboard, delete component from container
     if(this.props.dashboard){
       this.props.removeFavoriteMovie(this.props.data.imdbID);
@@ -34,7 +35,7 @@ class FavoriteButton extends Component{
       headers:{
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: `imdbID=${this.props.data.imdbID}`
+      body: `userId=${loggedUser.id}&imdbID=${this.props.data.imdbID}`
     })
     .then(response => response.json())
     .then(data => {

@@ -8,7 +8,6 @@ class Login extends Component {
    }
   sendRequest(e){
     e.preventDefault();
-    console.log(this.state.email, this.state.password)
     let email = this.state.email;
     let password = this.state.password
     if(email !== null || email !== undefined || password !== null || password !== undefined){

@@ -43,7 +43,7 @@ router.get('/getFavorites/:userId',(req,res)=>{
 });
 
 router.post('/addFavorite',(req,res)=>{
-	FavoriteMovie.find({imdbID: req.body.imdbId},(err, data)=>{
+	FavoriteMovie.find({userId: req.body.userId, imdbID: req.body.imdbId},(err, data)=>{
 		if(err){
 			res.send(JSON.stringify({'status':'failed', 'message':'Error while adding favorite movie'}));
 		}
