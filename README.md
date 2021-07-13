@@ -7,10 +7,12 @@ On Kino you can easily find information on the movies you love!
 - Search by movie title
 - Highlight of movie information such as release date, awards, box office, trailer, and much more
 - Ratings by IMDB, Rotten Tomatoes and Metacritic
+- Users can share trailer on social media
 - Authentication system which allows creation of list of favorite movies for quick look up
 
 ![](images/kino-image2.png)
 ![](images/hp.png)
+![](images/trailer.png)
 
 ## Tech stack
 The web application was developed using Node.js and MongoDB on the back-end and React.js on the front end. The deployment was made on Heroku.
