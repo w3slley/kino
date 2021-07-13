@@ -40,8 +40,8 @@ router.get('/:imdbId', async (req, res)=>{
 			url: `http://www.omdbapi.com/?i=${movieId}&type=movie&apikey=${process.env.OMDB_API_KEY}`
 		});
 		movieData = response.data;
-		//movieData['YoutubeId'] = await getYoutubeId(movieData.Title, movieData.Year);
-		movieData['YoutubeId'] = 'upwf8RsyNqQ'; //let this here till I can make requests to the youtube api again
+		movieData['YoutubeId'] = await getYoutubeId(movieData.Title, movieData.Year);
+		//movieData['YoutubeId'] = 'upwf8RsyNqQ'; //let this here till I can make requests to the youtube api again
 	}
 	catch(err){
 		console.error(err);

@@ -1,20 +1,51 @@
 import {Component} from 'react';
 
 class Login extends Component {
-  state = {  }
+  state = { 
+    email: '',
+    password: '',
+    loginError: ''
+   }
+  sendRequest(e){
+    e.preventDefault();
+    console.log(this.state);
+    fetch('http://localhost:8000/users/login',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/x-www-form-urlencoded'
+      },
+      body:`email=${this.state.email}&password=${this.state.password}`
+    })
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data);
+      if(data.status === 'success'){
+        localStorage.setItem('user', JSON.stringify({
+          'name':data.user.name,
+          'username':data.user.username,
+          'email':data.user.email
+        }));
+        window.location = '/dashboard';
+      }
+      else{
+        this.setState({loginError: data.message});
+      }
+    });
+  }
   render() { 
     return (
       <div style={login}>
-        <form method="POST" action="/user/login">
+        <form onSubmit={(e)=>this.sendRequest(e)}>
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
           <div className="form-group">
             <label className="sr-only">Email address</label>
-            <input className="mt-5 mb-3" type="email" className="form-control" placeholder="Email address"></input>
+            <input onKeyUp={(e)=>this.setState({email: e.target.value,loginError:''})} className="mt-5 mb-3" type="email" className="form-control" placeholder="Email address"></input>
           </div>
           <div className="form-group">
             <label className="sr-only">Password</label>
-            <input className="mt-5 mb-3" type="password" className="form-control" placeholder="Password" ></input>
+            <input onKeyUp={(e)=>this.setState({password: e.target.value,loginError:''})} className="mt-5 mb-3" type="password" className="form-control" placeholder="Password" ></input>
           </div>
+          <span style={{color: 'red'}}>{this.state.loginError}</span><br></br>
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
       </div>

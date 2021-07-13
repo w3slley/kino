@@ -1,16 +1,45 @@
 import {Component} from 'react';
 
 class Register extends Component {
-  state = {  }
+  state = { 
+    name: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: ''
+   };
+
+   sendRequest(e){
+     e.preventDefault();
+     console.log(this.state);
+     if(this.state.password === this.state.confirmPassword){
+      fetch('http://localhost:8000/users/register',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/x-www-form-urlencoded'
+        },
+        body:`name=${this.state.name}&email=${this.state.email}&username=${this.state.username}&password=${this.state.password}&confirmPassword=${this.state.confirmPassword}`
+       })
+       .then(response => response.json())
+       .then(data => {
+         console.log(data);
+         window.location='/login';
+        });
+     }
+     else{
+       console.log('passwords do not match');
+     }
+   }
+
   render() { 
     return (
       <div style={{width:'30%',margin:'50px auto'}} className='container'>
         <h1>Create an account</h1>
-        <form method="post" action="/users/register" className="needs-validation">
+        <form onSubmit={(e)=>this.sendRequest(e)} className="needs-validation">
           <div className="mb-3">
             <label >Name</label>
             <div className="input-group">
-              <input name="name" type="text" className="form-control" placeholder="Username"></input>
+              <input onKeyUp={(e)=>this.setState({name: e.target.value})} name="name" type="text" className="form-control" placeholder="Username" required></input>
             </div>
           </div>
           <div className="mb-3">
@@ -19,7 +48,7 @@ class Register extends Component {
               <div className="input-group-prepend">
                 <span className="input-group-text">@</span>
               </div>
-              <input name="username" type="text" className="form-control" placeholder="Username"></input>
+              <input onKeyUp={(e)=>this.setState({username: e.target.value})} type="text" className="form-control" placeholder="Username" required></input>
               <div className="invalid-feedback" style={{width: '100%'}}>
                 Your username is required.
               </div>
@@ -27,18 +56,18 @@ class Register extends Component {
           </div>
           <div className="mb-3">
             <label>Email</label>
-            <input name="email" type="email" className="form-control" placeholder="you@example.com"></input>
+            <input onKeyUp={(e)=>this.setState({email: e.target.value})} type="email" className="form-control" placeholder="you@example.com" required></input>
             <div className="invalid-feedback">
               Please enter a valid email address.
             </div>
           </div>
           <div className="mb-3">
             <label>Password </label>
-            <input name="password" type="password" className="form-control"></input>
+            <input onKeyUp={(e)=>this.setState({password: e.target.value})} name="password" type="password" className="form-control"></input>
           </div>
           <div className="mb-3">
             <label>Confirm password </label>
-            <input name="confirm-password" type="password" className="form-control"></input>
+            <input onKeyUp={(e)=>this.setState({confirmPassword: e.target.value})} name="confirm-password" type="password" className="form-control" required></input>
           </div>
 
           <hr className="mb-4"></hr>

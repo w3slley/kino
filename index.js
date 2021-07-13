@@ -1,12 +1,35 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
+const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 require('dotenv').config();
 
 /*CORS*/
 app.use(cors());
+
+/*Body parser middleware*/
+app.use(bodyParser.urlencoded({extended: false}));
+
+/* Session middleware */
+app.use(session({
+  secret: 'mouse dog',
+  resave: false,
+  saveUninitialized: true
+}))
+
+// Establishing MongoDB connection
+mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true})
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log('Connected to MongoDB database!');
+});
+
+app.use(express.static(path.join(__dirname,'frontend/build')));
 
 app.get('/', (req, res)=>{
   res.sendFile('frontend/build/index.html', {
