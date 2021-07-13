@@ -6,7 +6,8 @@ class Register extends Component {
     email: '',
     username: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    registerError: ''
    };
 
    sendRequest(e){
@@ -25,7 +26,7 @@ class Register extends Component {
         });
      }
      else{
-       console.log('passwords do not match');
+      this.setState({registerError: "Passwords don't match"});
      }
    }
 
@@ -67,7 +68,7 @@ class Register extends Component {
             <label>Confirm password </label>
             <input onKeyUp={(e)=>this.setState({confirmPassword: e.target.value})} name="confirm-password" type="password" className="form-control" required></input>
           </div>
-
+          <span style={{color: 'red'}}>{this.state.registerError}</span><br></br>
           <hr className="mb-4"></hr>
           <button className="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
         </form>

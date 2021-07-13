@@ -8,28 +8,33 @@ class Login extends Component {
    }
   sendRequest(e){
     e.preventDefault();
-    fetch('/users/login',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded'
-      },
-      body:`email=${this.state.email}&password=${this.state.password}`
-    })
-    .then(response => response.json())
-    .then(data =>{
-      if(data.status === 'success'){
-        localStorage.setItem('user', JSON.stringify({
-          'id': data.user.id,
-          'name':data.user.name,
-          'username':data.user.username,
-          'email':data.user.email
-        }));
-        window.location = '/dashboard';
-      }
-      else{
-        this.setState({loginError: data.message});
-      }
-    });
+    console.log(this.state.email, this.state.password)
+    let email = this.state.email;
+    let password = this.state.password
+    if(email !== null || email !== undefined || password !== null || password !== undefined){
+      fetch('/users/login',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/x-www-form-urlencoded'
+        },
+        body:`email=${this.state.email}&password=${this.state.password}`
+      })
+      .then(response => response.json())
+      .then(data =>{
+        if(data.status === 'success'){
+          localStorage.setItem('user', JSON.stringify({
+            'id': data.user.id,
+            'name':data.user.name,
+            'username':data.user.username,
+            'email':data.user.email
+          }));
+          window.location = '/dashboard';
+        }
+        else{
+          this.setState({loginError: data.message});
+        }
+      });
+    }
   }
   render() { 
     return (

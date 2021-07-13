@@ -44,30 +44,34 @@ class FavoriteMovieContainer extends Component {
   render() { 
     return (
       <>
-      <div className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        {!this.state.dataFetched? 
-        <Loader 
-          type="TailSpin"
-          color="#262626" 
-          height={80} 
-          width={80} 
-        />  : ''}
+      {this.state.dataFetched && this.state.movies.length === 0 ?
+        <p>You don't have any favorite movies :(</p>
+        :
+        <div className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+          {!this.state.dataFetched? 
+          <Loader 
+            type="TailSpin"
+            color="#262626" 
+            height={80} 
+            width={80} 
+          />  : ''}
 
-        {this.state.dataFetched ? 
-        <>
-        <div className="row">
-          {this.state.movies.map((movie)=>(
-            <MovieCard 
-            dashboard={true} 
-            favorite={true} 
-            removeFavoriteMovie={(imdbId)=>this.removeFavoriteMovie(imdbId)}  
-            key={movie.imdbID} 
-            data={movie} />
-          ))}
+          {this.state.dataFetched ? 
+          <>
+          <div className="row">
+            {this.state.movies.map((movie)=>(
+              <MovieCard 
+              dashboard={true} 
+              favorite={true} 
+              removeFavoriteMovie={(imdbId)=>this.removeFavoriteMovie(imdbId)}  
+              key={movie.imdbID} 
+              data={movie} />
+            ))}
+          </div>
+          </>
+          : this.state.errors}
         </div>
-        </>
-        : this.state.errors}
-      </div>
+      }
       </>
     );
   }
