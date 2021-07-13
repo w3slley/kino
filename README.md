@@ -14,6 +14,21 @@ On Kino you can easily find information on the movies you love!
 ![](images/hp.png)
 ![](images/trailer.png)
 
+## Usage
+If you would like to run the application locally, first clone the repository
+
+`git clone https://github.com/w3slley/kino.git`
+`cd kino`
+
+In one terminal run the Node.js server
+
+`node index.js`
+
+and in another run the React development server
+
+`cd front end`
+`npm start`
+
 ## Tech stack
 The web application was developed using Node.js and MongoDB on the back-end and React.js on the front end. The deployment was made on Heroku.
 
