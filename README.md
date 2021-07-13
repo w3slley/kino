@@ -18,6 +18,7 @@ On Kino you can easily find information on the movies you love!
 If you would like to run the application locally, first clone the repository
 
 `git clone https://github.com/w3slley/kino.git`
+
 `cd kino`
 
 In one terminal run the Node.js server
@@ -27,7 +28,10 @@ In one terminal run the Node.js server
 and in another run the React development server
 
 `cd front end`
+
 `npm start`
+
+Wait for the browser to open at `http://localhost:3000`.
 
 ## Tech stack
 The web application was developed using Node.js and MongoDB on the back-end and React.js on the front end. The deployment was made on Heroku.
