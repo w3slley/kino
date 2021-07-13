@@ -8,7 +8,6 @@ class Login extends Component {
    }
   sendRequest(e){
     e.preventDefault();
-    console.log(this.state);
     fetch('/users/login',{
       method:'POST',
       headers:{
@@ -20,6 +19,7 @@ class Login extends Component {
     .then(data =>{
       if(data.status === 'success'){
         localStorage.setItem('user', JSON.stringify({
+          'id': data.user.id,
           'name':data.user.name,
           'username':data.user.username,
           'email':data.user.email

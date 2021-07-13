@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import FavoriteMovieCardContainer from './FavoriteMovieCardContainer.js';
 
 class Dashboard extends Component {
   state = {  }
@@ -7,7 +8,8 @@ class Dashboard extends Component {
       <section className="mt-5 text-center">
         <div className="container">
           <h1 className="jumbotron-heading">Dashboard</h1>
-          <p className="lead text-muted">Show liked movies here!</p>
+          <p className="lead text-muted">Here are your favorite movies:</p>
+          <FavoriteMovieCardContainer />
         </div>
       </section>
     );

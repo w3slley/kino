@@ -5,7 +5,7 @@ class Footer extends Component {
   render() { 
     return (
       <footer style={{display:'flex',alignItems:'center',justifyContent:'center',height:50,margin:'20px 0 0 0',backgroundColor: '#262626',position:'relative',bottom:0,width:'100%'}}>
-        <p style={{margin:0,color: 'white'}}>Made with ❤️ by <a target='_blank' href='https://w3slley.github.io'>w3slley</a>. © 2021</p>
+        <p style={{margin:0,color: 'white'}}>Made with ❤️ by <a target='_blank' rel="noreferrer" href='https://w3slley.github.io'>w3slley</a>. © 2021</p>
       </footer>
     );
   }

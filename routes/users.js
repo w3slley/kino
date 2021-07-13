@@ -9,7 +9,6 @@ router.post('/login', function (req, res) {
   console.log(req.body.email, req.body.password);
   User.findOne({ email: req.body.email }, function (err, user) {
     if (err) throw (err);
-    console.log(user);
     if (!user) {
       res.send({'status':'failed','message':'Invalid information'});
     }
@@ -17,7 +16,7 @@ router.post('/login', function (req, res) {
       if (err) throw(err);
       console.log(valid);
       if (valid) {
-        res.send({'status':'success', 'user': {'name':user.name,'email':user.email,'username':user.username}});
+        res.send({'status':'success', 'user': {'id': user._id, 'name':user.name,'email':user.email,'username':user.username}});
       }
       else {
         res.send({'status':'failed','message':'Invalid Information'});
@@ -40,7 +39,6 @@ router.post('/register', (req, res) => {
   let username = req.body.username
   let password = req.body.password
   let confirmPassword = req.body.confirmPassword
-  console.log(email, username, password, confirmPassword)
   
   bcrypt.hash(password, 10, (err, hash) => {//Hashing password
     let newUser = new User({ name: name, email: email, username: username, password: hash });

@@ -9,6 +9,7 @@ class MovieCardContainer extends Component {
     this.state = {
       dataFetched: false,
       movies: [],
+      favoriteMovies: [],
       pageNumber: 1,
       totalResulst: 0,
       errors:[],
@@ -26,6 +27,10 @@ class MovieCardContainer extends Component {
   }
   
   componentDidMount(){
+    // Retreiving user favorite movies if they are logged in
+    if(localStorage.getItem('user') != null){
+      this.getFavoriteMovies();
+    }
     console.log(this.props.match.params.searchMovie);
     this.getMovies();
   }
@@ -49,6 +54,32 @@ class MovieCardContainer extends Component {
       }
       else{
 
+        //add error handlers later
+      }
+    });
+  }
+
+  getFavoriteMovies(){
+    let loggedUser = JSON.parse(localStorage.getItem('user'));
+    console.log(loggedUser);
+    fetch(`/movies/getFavorites/${loggedUser.id}`)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({dataFetched: true});
+      if(data.status === 'success'){
+        // Creating map with movie ids and whether the user has set it as favorite
+        let map = {};
+        for(let f of data.data){
+          map[f.imdbID] = true;
+        }
+        this.setState({
+          isFavoriteMap: map
+        })
+      }
+      else if(data.status === 'failed'){ //No movie was found on
+        console.log(data.message)
+      }
+      else{
         //add error handlers later
       }
     });
@@ -88,7 +119,11 @@ class MovieCardContainer extends Component {
         <>
         <div className="row">
           {this.state.movies.map((movie)=>(
-            <MovieCard key={movie.imdbID} data={movie} />
+            <MovieCard 
+            dashboard={false} 
+            favorite={localStorage.getItem('user') != null && this.state.isFavoriteMap[movie.imdbID]} 
+            key={movie.imdbID} 
+            data={movie} />
           ))}
         </div>
         
