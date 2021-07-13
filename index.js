@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Establishing MongoDB connection
-mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://weslley:bZBwQ2r3wO8Wk09q@cluster0.j3pbe.mongodb.net/kinodb?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -23,18 +23,17 @@ db.once('open', function() {
 
 app.use(express.static(path.join(__dirname,'frontend/build')));
 
-app.get('/', (req, res)=>{
-  res.sendFile('frontend/build/index.html', {
-    root: path.join(__dirname, './')
-  });
-});
-
 /*Movie routes*/
 app.use('/movies', require('./routes/movies.js'));
 
 /*Users routes*/
 app.use('/users', require('./routes/users.js'));
 
+app.get('/*', (req, res)=>{
+  res.sendFile('frontend/build/index.html', {
+    root: path.join(__dirname, './')
+  });
+});
 
 app.listen(port, ()=>{
   console.log(`Server started at port ${port}!`);
