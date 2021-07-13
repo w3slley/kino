@@ -9,7 +9,7 @@ On Kino you can easily find information on the movies you love!
 - Search by movie title
 - Highlight of movie information such as release date, awards, box office, among others
 - Ratings by IMDB, Rotten Tomatoes and Metacritic
-- Authentication system which allows creation of lists of favorite movies for quick look up
+- Authentication system which allows creation of list of favorite movies for quick look up
 
 ![](images/kino-image2.png)
 ![](images/hp.png)
