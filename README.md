@@ -58,7 +58,7 @@ Example:
 }
 ```
 
-### `/movies/:imdbId (GET)
+### `/movies/:imdbId` (GET)
 Retrieves data on movie whose IMDB id is `imdbId`. 
 
 Example:
@@ -110,3 +110,6 @@ Example:
 ```
 
 It's worth poiting out that the field `YoutubeId` on the previous response corresponds to a video unique identifier which is used to render the YouTube video on a movie page (the url of a video is `https://youtube.com/watch?v=:YoutubeId`). And this data field doesn't come from OMDB itself: it is retreived from the YouTube API and then appended to the response body. 
+
+Therefore, to minimize calls both to the back-end API and also to the public APIs used, a decision was made to make one call to `/movies/search` to get a list of movies related to the users' search term and another call to `/movies/:imdbId` to display the movie information on its unique page.
+
