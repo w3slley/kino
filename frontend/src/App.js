@@ -27,7 +27,7 @@ function App(){
           <Search />
           <Route path='/search/:searchMovie' component={MovieCardContainer} />
         </Route>
-        <Route exact path='/movies/:movieId' component={MovieContainer} />
+        <Route exact path='/title/:movieId' component={MovieContainer} />
         
         {localStorage.getItem('user')==null ? 
         <>

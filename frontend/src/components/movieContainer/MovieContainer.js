@@ -29,7 +29,7 @@ class Movie extends Component {
   }
 
   getMovie(movieId){
-    fetch(`http://localhost:8000/movies/${movieId}`)
+    fetch(`/movies/${movieId}`)
     .then(response => response.json())
     .then(data => {
       this.setState({dataFetched: true});

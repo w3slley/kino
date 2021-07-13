@@ -12,7 +12,7 @@ class MovieCard extends Component {
           <div className="card-body">
             <p className="card-text">{this.props.data.Title} ({this.props.data.Year})</p>
             <div className="text-center ">
-              <Link className='btn btn-sm btn-primary' to={`/movies/${this.props.data.imdbID}`}>More details</Link>
+              <Link className='btn btn-sm btn-primary' to={`/title/${this.props.data.imdbID}`}>More details</Link>
             </div>
           </div>
         </div>
