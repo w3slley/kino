@@ -1,5 +1,4 @@
 # Kino
-![](images/hp.png)
 On Kino you can easily find information on the movies you love!
 
 ## Features
@@ -9,6 +8,8 @@ On Kino you can easily find information on the movies you love!
 - Authentication system which allows creation of lists of favorite movies for quick look up
 
 ![](images/kino-image2.png)
+![](images/hp.png)
+
 ## Tech stack
 The web application was developed using Node.js and MongoDB on the back-end and React.js on the front end. The deployment was made using Heroku.
 
