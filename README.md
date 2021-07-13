@@ -1,6 +1,7 @@
 <div style="text-align:center">
   <a href="https://kinowebapp.herokuappp.com"><img width="150" src="images/logo.svg"></a>
 </div>
+
 # About Kino
 On Kino you can easily find information on the movies you love!
 
