@@ -45,12 +45,16 @@ The authentication system was implemented on the browser using `LocalStorage`.
 
 ## Back-end movies API
 
-### `/movies/search/:movieTitle` (GET)
+### `/movies/search/` (GET)
 Retrieves list of movies that contains search term `movieTitle`
+
+#### GET Parameters
+`q`: Search term
+`p`: Page number 
 
 Example:
 
-`curl 'http://localhost:8000/movies/search?q=iron+man'`
+`curl 'http://localhost:8000/movies/search?q=iron+man&p=1'`
 
 ```
 {
