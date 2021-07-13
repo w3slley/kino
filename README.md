@@ -1,6 +1,4 @@
-<p align="center">
-  <a target="_blank" href="https://kinowebapp.herokuappp.com"><img width="150" src="images/logo.svg"></a>
-</p>
+<p align="center"><a href="https://kinowebapp.herokuapp.com/" target="_blank"><img width="150" src="images/logo.svg"></a></p>
 
 # About Kino
 On Kino you can easily find information on the movies you love!
@@ -9,7 +7,7 @@ On Kino you can easily find information on the movies you love!
 - Search by movie title
 - Highlight of movie information such as release date, awards, box office, among others
 - Ratings by IMDB, Rotten Tomatoes and Metacritic
-- Authentication system which allows creation of list of favorite movies for quick look up
+- Authentication system which allows creation of lists of favorite movies for quick look up
 
 ![](images/kino-image2.png)
 ![](images/hp.png)
