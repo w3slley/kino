@@ -13,7 +13,7 @@ class Register extends Component {
      e.preventDefault();
      console.log(this.state);
      if(this.state.password === this.state.confirmPassword){
-      fetch('http://localhost:8000/users/register',{
+      fetch('/users/register',{
         method:'POST',
         headers:{
           'Content-Type':'application/x-www-form-urlencoded'

@@ -9,7 +9,7 @@ class Login extends Component {
   sendRequest(e){
     e.preventDefault();
     console.log(this.state);
-    fetch('http://localhost:8000/users/login',{
+    fetch('/users/login',{
       method:'POST',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded'
