@@ -1,8 +1,6 @@
-/*jshint esversion: 6 */
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-const passport = require('passport')
 
 let User = require('../models/User.js')
 

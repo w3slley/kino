@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const session = require('express-session');
 require('dotenv').config();
 
 /*CORS*/
@@ -13,13 +12,6 @@ app.use(cors());
 
 /*Body parser middleware*/
 app.use(bodyParser.urlencoded({extended: false}));
-
-/* Session middleware */
-app.use(session({
-  secret: 'mouse dog',
-  resave: false,
-  saveUninitialized: true
-}))
 
 // Establishing MongoDB connection
 mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true})
