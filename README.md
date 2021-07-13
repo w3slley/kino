@@ -30,7 +30,7 @@ node index.js
 and in another run the React development server
 
 ```
-cd front end
+cd frontend
 npm start
 ```
 
