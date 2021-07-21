@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const bcrypt = require('bcrypt')
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt');
 
-let User = require('../models/User.js')
+let User = require('../models/User.js');
 
 //Login process
 router.post('/login', function (req, res) {
@@ -28,29 +28,22 @@ router.post('/login', function (req, res) {
   }
 });
 
-
-
-//Logout
-router.get('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
-});
-//Register process
+//Register user
 router.post('/register', (req, res) => {
-  let name = req.body.name
-  let email = req.body.email
-  let username = req.body.username
-  let password = req.body.password
-  let confirmPassword = req.body.confirmPassword
-  
-  bcrypt.hash(password, 10, (err, hash) => {//Hashing password
-    let newUser = new User({ name: name, email: email, username: username, password: hash });
-    newUser.save((err) => {
-      if (err) return console.error(err);
-    })
-
-    res.send({'status':'success'});
-  });
+  let name = req.body.name;
+  let email = req.body.email;
+  let username = req.body.username;
+  let password = req.body.password;
+  let confirmPassword = req.body.confirmPassword;
+  if(name != undefined && email != undefined && username != undefined && password != undefined && confirmPassword != undefined && password == confirmPassword){
+    bcrypt.hash(password, 10, (err, hash) => {//Hashing password
+      let newUser = new User({ name: name, email: email, username: username, password: hash });
+      newUser.save((err) => {
+        if (err) console.error(err);
+      });
+      res.send({'status':'success'});
+    }); 
+  }
 });
 
-module.exports = router
+module.exports = router;
