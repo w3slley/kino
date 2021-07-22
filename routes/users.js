@@ -35,7 +35,7 @@ router.post('/register', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
   let confirmPassword = req.body.confirmPassword;
-  if(name != undefined && email != undefined && username != undefined && password != undefined && confirmPassword != undefined && password == confirmPassword){
+  if(name != undefined && email != undefined && username != undefined && password != undefined && confirmPassword != undefined && password === confirmPassword){
     bcrypt.hash(password, 10, (err, hash) => {//Hashing password
       let newUser = new User({ name: name, email: email, username: username, password: hash });
       newUser.save((err) => {

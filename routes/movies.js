@@ -10,7 +10,7 @@ router.get('/search', async (req, res)=>{
 	const urlString = url.parse(req.url);
 	let query = queryString.parse(urlString['search']);
 	if(query.q == undefined){
-		res.send(JSON.stringify({'status':'failed','message':'Parameter q is required'}));
+		res.send({'status':'failed','message':'Parameter q is required'});
 	}
 	let searchMovie = (query.q).replace(' ', '+');
 	let pageNumber = query.p;
@@ -37,7 +37,7 @@ router.get('/getFavorites/:userId',(req,res)=>{
 	let userId = req.params.userId;
 	FavoriteMovie.find({userId: userId},(err, data)=>{
 		if(err){
-			res.send(JSON.stringify({'status':'failed','message':'Error while retreiving favorite movies'}));
+			res.send({'status':'failed','message':'Error while retreiving favorite movies'});
 		}
 		else{
 			res.send(JSON.stringify({'status':'success','data':data}));
@@ -49,16 +49,16 @@ router.get('/getFavorites/:userId',(req,res)=>{
 router.post('/addFavorite',(req,res)=>{
 	FavoriteMovie.find({userId: req.body.userId, imdbID: req.body.imdbId},(err, data)=>{
 		if(err){
-			res.send(JSON.stringify({'status':'failed', 'message':'Error while adding favorite movie'}));
+			res.send({'status':'failed', 'message':'Error while adding favorite movie'});
 		}
 		else if(data.length == 0){
 			let newFavoriteMovie = new FavoriteMovie({Title: req.body.title, Year: req.body.year, Poster: req.body.poster, imdbID: req.body.imdbId, userId: req.body.userId});
 			newFavoriteMovie.save((err)=>{
 				if(err) {
-					res.send(JSON.stringify({'status':'failed', 'message':'Error while saving favorite movie to database'}));
+					res.send({'status':'failed', 'message':'Error while saving favorite movie to database'});
 				}
 				else{
-					res.send(JSON.stringify({'status':'success'}));
+					res.send({'status':'success'});
 				}
 			});
 		}
@@ -71,10 +71,10 @@ router.post('/removeFavorite',(req,res)=>{
 	FavoriteMovie.deleteOne({imdbID: req.body.imdbID},(err, data)=>{
 		if(err){
 			console.log(err)
-			res.send(JSON.stringify({'status':'failed', 'message':'Error while removing favorite movie'}));
+			res.send({'status':'failed', 'message':'Error while removing favorite movie'});
 		}
 		else{
-			res.send(JSON.stringify({'status':'success'}));
+			res.send({'status':'success'});
 		}
 	});
 });
@@ -83,7 +83,7 @@ router.post('/removeFavorite',(req,res)=>{
 router.get('/:imdbId', async (req, res)=>{
 	let movieId = req.params.imdbId;
 	if(movieId.substring(0,2) != 'tt'){
-		res.send(JSON.stringify({'status': 'failed', 'message': 'Invalid IMDB movie id.'}));
+		res.send({'status': 'failed', 'message': 'Invalid IMDB movie id.'});
 	}
 	let movieData;
 	try{
