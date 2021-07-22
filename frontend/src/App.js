@@ -6,7 +6,6 @@ import Register from './components/authentication/Register.js';
 import Welcome from './components/Welcome.js';
 import Dashboard from './components/Dashboard.js';
 import Profile from './components/Profile.js';
-import Footer from './components/Footer.js';
 import MovieCardContainer from './components/MovieCardContainer.js';
 import MovieContainer from './components/movieContainer/MovieContainer.js';
 

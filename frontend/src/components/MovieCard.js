@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 class MovieCard extends Component {
   state = {
-    favorite: (this.props.favorite != undefined)
+    favorite: (this.props.favorite !== undefined)
   }
 
   toggleFavorite(){

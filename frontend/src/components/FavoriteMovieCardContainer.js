@@ -37,7 +37,7 @@ class FavoriteMovieContainer extends Component {
   }
 
   removeFavoriteMovie(imdbID){
-    let newMovies = this.state.movies.filter((movie)=>movie.imdbID != imdbID)
+    let newMovies = this.state.movies.filter((movie)=>movie.imdbID !== imdbID)
     this.setState({movies: newMovies});
   }
 

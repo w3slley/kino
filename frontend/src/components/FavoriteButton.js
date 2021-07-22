@@ -54,7 +54,7 @@ class FavoriteButton extends Component{
   render(){
     return (
       <>
-      {this.props.favorite == false  &&
+      {this.props.favorite === false  &&
         <button onClick={(e)=>{this.addToFavorite(e)}} className='btn btn-sm btn-success mt-2'>Add to favorite</button>
       }
       {this.props.favorite &&
