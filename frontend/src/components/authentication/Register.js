@@ -32,7 +32,7 @@ class Register extends Component {
 
   render() { 
     return (
-      <div style={{width:'30%',margin:'50px auto'}} className='container'>
+      <div style={{width:'500px'}} className='container'>
         <h1>Create an account</h1>
         <form onSubmit={(e)=>this.sendRequest(e)} className="needs-validation">
           <div className="mb-3">

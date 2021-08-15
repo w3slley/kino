@@ -4,7 +4,7 @@ import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, Tele
 class Trailer extends Component {
   render() { 
     return (
-      <div>
+      <div style={{marginBottom: '50px'}}>
         <h1>Trailer</h1>
         <iframe style={{border: 'none'}} title={this.props.youtubeId} width='80%' height='500px'  src={`https://youtube.com/embed/${this.props.youtubeId}`}></iframe>
         <div className='mt-3'>

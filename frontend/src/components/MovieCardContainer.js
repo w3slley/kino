@@ -128,7 +128,7 @@ class MovieCardContainer extends Component {
         </div>
         
         {!this.state.noMoreMovies &&
-          <button className="btn btn-outline-secondary" onClick={()=>this.loadMore()}>Load more</button>
+          <button style={{marginBottom:'50px'}} className="btn btn-outline-secondary" onClick={()=>this.loadMore()}>Load more</button>
         }
         </>
         : this.state.errors}

@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard.js';
 import Profile from './components/Profile.js';
 import MovieCardContainer from './components/MovieCardContainer.js';
 import MovieContainer from './components/movieContainer/MovieContainer.js';
+import Footer from './components/Footer.js';
 
 function App(){
   return (
@@ -38,7 +39,7 @@ function App(){
         </>
         }
       </Switch>
-      
+      <Footer />
     </Router>
   );
 }
