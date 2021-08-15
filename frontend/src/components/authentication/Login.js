@@ -6,6 +6,11 @@ class Login extends Component {
     password: '',
     loginError: ''
    }
+
+  componentDidMount(){
+    document.title = "Login | Kino";
+  }
+  
   sendRequest(e){
     e.preventDefault();
     let email = this.state.email;

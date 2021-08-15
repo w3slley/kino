@@ -10,6 +10,10 @@ class Register extends Component {
     registerError: ''
    };
 
+   componentDidMount(){
+    document.title = "Register | Kino";
+  }
+
    sendRequest(e){
      e.preventDefault();
      if(this.state.password === this.state.confirmPassword){

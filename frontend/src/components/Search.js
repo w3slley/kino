@@ -8,6 +8,10 @@ class Search extends Component {
     }
   }
 
+  componentDidMount(){
+    document.title = 'Search movies | Kino';
+  }
+
   render() { 
     return ( 
       <>

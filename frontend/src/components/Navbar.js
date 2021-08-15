@@ -14,8 +14,8 @@ class Navbar extends Component {
     return ( 
       <>
       <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow ">
-        <img style={{width: 50}} alt="" src="/images/logo.svg"></img>
-        <p style={{fontFamily:'sans-serif', fontSize:30}} className="ml-1 my-0 mr-md-auto font-weight-normal">Kino</p>
+        <Link to='/' ><img style={{width: 50}} alt="" src="/images/logo.svg"></img></Link>
+        <p style={{fontFamily:'sans-serif', fontSize:30, cursor:'default'}} className="ml-1 my-0 mr-md-auto font-weight-normal">Kino</p>
         <nav className="my-2 my-md-0 mr-md-3 ">
         {localStorage.getItem('user')==null ?
           <Link className='p-2 text-dark' to='/'>Home</Link>

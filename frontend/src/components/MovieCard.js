@@ -6,7 +6,6 @@ class MovieCard extends Component {
   state = {
     favorite: (this.props.favorite !== undefined)
   }
-
   toggleFavorite(){
     this.setState((state)=>({favorite: !state.favorite}));
   }

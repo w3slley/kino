@@ -35,6 +35,7 @@ class Movie extends Component {
       this.setState({dataFetched: true});
       if(data.Response === 'True'){
         this.setState({movieData: data});
+        document.title = `${this.state.movieData.Title} (${this.state.movieData.Year}) | Kino`;
       }
       else if(data.status === 'failed'){
         this.setState({errors: data.message})

@@ -2,7 +2,11 @@ import {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Welcome extends Component {
-  state = {  }
+
+  componentDidUpdate(){
+    document.title = 'Kino | Learn more about the movies you love!';
+  }
+
   render() { 
     return (
       <section className="mt-5 text-center">

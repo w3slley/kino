@@ -20,7 +20,6 @@ class MovieCardContainer extends Component {
   //Re-render component if searchMovie value in props changes
   componentDidUpdate(prevProps, prevState){
     if(prevProps.match.params.searchMovie !== this.props.match.params.searchMovie){
-      console.log(this.props.match.params.searchMovie);
       this.getMovies(this.props.match.params.searchMovie);
     }
     
