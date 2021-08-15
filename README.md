@@ -1,7 +1,7 @@
 <p align="center"><a href="https://kinowebapp.herokuapp.com/" target="_blank"><img width="150" src="images/logo.svg"></a></p>
 
-# About Kino
-On Kino you can easily find information on the movies you love!
+# About Kino 
+On Kino users can easily find information on the movies they love! The project won 1st place (with a prize of 500€) at the [Dept back-end case assignment](https://www.deptagency.com/case-backend-developers/) which was part of the [2021 Digital Talent Virtual Fair](https://digitaltalent.easyvirtualfair.com/) at the University of Porto.
 
 ## Features
 - Search by movie title
