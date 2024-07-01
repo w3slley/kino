@@ -23,10 +23,7 @@ db.once('open', function() {
 
 app.use(express.static(path.join(__dirname,'frontend/build')));
 
-/*Movie routes*/
 app.use('/movies', require('./routes/movies.js'));
-
-/*Users routes*/
 app.use('/users', require('./routes/users.js'));
 
 app.get('/*', (req, res)=>{
